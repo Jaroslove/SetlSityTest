@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -67,16 +68,74 @@ namespace SetlSityTest.Controllers
 
         [FormAction("Add")]
         [Authorize(Roles = "admin")]
-        public int Add(int one)
+        public int Add(int inputData)
         {
             HttpContext.Items["rezult"] = 100;
-            return one + 100;
+            return inputData + 100;
+        }
+
+        [FormAction("AddNewUser")]
+        public string AddNewUser(string inputData)
+        {            
+            try
+            {
+                string[] sLogPass = inputData.Split('/');
+                string login = sLogPass[0];
+                string pass = sLogPass[1];
+
+                string patternPass = "^(?=.*?[a - z]).{6,}$";//needa check pass and check loging from existing in db
+
+                if (login.Length > 3)
+                {
+                    ApplicationUser user = new ApplicationUser { UserName = login };
+                    IdentityResult rezult = UserManager.Create(user, pass);
+
+                    if (rezult.Succeeded)
+                    {
+                        UserManager.AddToRoles(user.Id, "OneTask");
+
+                        HttpContext.Items["rezult"] = pass.Length.ToString();
+                        return pass.Length.ToString();
+                    }
+                }
+            }
+            catch (Exception) { }
+
+            return "Неверный логин или пароль";
+        }
+
+        [FormAction("CountUserTask")]
+        public string CountUserTask(string inputData)
+        {
+            try
+            {
+                string[] sLogTask = inputData.Split('/');
+                string userName = sLogTask[0];
+                string[] tasks = sLogTask[1].Split(';');
+
+                var user = UserManager.Users.FirstOrDefault(u => u.UserName == userName);
+                if (user != null)
+                {
+                    HttpContext.Items["rezult"] = tasks
+                        .Intersect(user.Tasks.Select(i => i.Name)
+                        .ToArray())
+                        .Count()
+                        .ToString();
+
+                    return HttpContext.Items["rezult"].ToString();
+                }
+            }
+            catch (Exception) { }
+
+            return "Неверно введенные данные";
         }
 
         public int NewTaskDo(int one)
         {
             return one + 1000;
         }
+
+
 
         [AllowAnonymous]
         public ActionResult Login()

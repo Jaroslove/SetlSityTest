@@ -9,13 +9,13 @@ namespace SetlSityTest.Filters
 {
     public class FormActionAttribute : ActionFilterAttribute
     {
-        string inputData, nameForm, userName;
+        string nameForm, userName;
         History history = null;
 
         public FormActionAttribute(string nameForm)
         {
             this.nameForm = nameForm;
-            //this.userName = userName;
+
             if (HttpContext.Current.User.Identity.IsAuthenticated)
             {
                 userName = HttpContext.Current.User.Identity.Name;
@@ -24,38 +24,31 @@ namespace SetlSityTest.Filters
         }
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            history.InputData = filterContext.ActionParameters["one"].ToString();
+            try
+            {
+                history.InputData = filterContext.ActionParameters["inputData"].ToString();
+            }
+            catch (Exception)
+            {                
+            }
             base.OnActionExecuting(filterContext);
         }
 
-        //public override void OnActionExecuted(ActionExecutedContext filterContext)
-        //{
-        //    var objectContent = filterContext.Response.Content as ObjectContent;
-        //    if (objectContent != null)
-        //    {
-        //        var type = objectContent.ObjectType; //type of the returned object
-        //        var value = objectContent.Value; //holding the returned value
-        //    }
-
-        //    history.OutputData = filterContext.HttpContext.Response.co
-        //    history.NameTask = nameForm;
-        //    history.UserName = userName;
-
-        //    ApplicationUserManager.Context.Histories.Add(history);
-        //    ApplicationUserManager.Context.SaveChanges();
-
-        //    base.OnActionExecuted(filterContext);
-        //}
-
         public override void OnResultExecuted(ResultExecutedContext filterContext)
         {
+            try
+            {
+                history.OutputData = HttpContext.Current.Items["rezult"].ToString();
+                history.NameTask = nameForm;
+                history.UserName = userName;
 
-            history.OutputData = HttpContext.Current.Items["rezult"].ToString();
-            history.NameTask = nameForm;
-            history.UserName = userName;
+                ApplicationUserManager.Context.Histories.Add(history);
+                ApplicationUserManager.Context.SaveChanges();
+            }
+            catch (Exception)
+            {                
+            }
 
-            ApplicationUserManager.Context.Histories.Add(history);
-            ApplicationUserManager.Context.SaveChanges();
 
             base.OnResultExecuted(filterContext);
         }

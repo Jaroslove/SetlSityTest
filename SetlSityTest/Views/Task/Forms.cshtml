@@ -76,12 +76,11 @@
 
     if ((User.IsInRole("admin") || User.IsInRole("FiveTask")) && task.Name == "д")
     {
-        using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "FiveTask" }))
+        using (Ajax.BeginForm("AddNewUser", new AjaxOptions { UpdateTargetId = "FiveTask" }))
         {
             @Html.AntiForgeryToken()
 
-            <input type="text" name="one" />
-            <input type="text" id="o" name="name" />
+            <input type="text" name="inputData" />
             <input type="submit" value="Поиск" />
             <p id="FiveTask">
 
@@ -93,12 +92,11 @@
 
     if ((User.IsInRole("admin") || User.IsInRole("SixTask")) && task.Name == "е")
     {
-        using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "SixTask" }))
+        using (Ajax.BeginForm("CountUserTask", new AjaxOptions { UpdateTargetId = "SixTask" }))
         {
             @Html.AntiForgeryToken()
 
-            <input type="text" name="one" />
-            <input type="text" id="o" name="name" />
+            <input type="text" name="inputData" />
             <input type="submit" value="Поиск" />
             <p id="SixTask">
 

@@ -281,6 +281,12 @@
       <DependentUpon>201806171557138_AddedHistoryTab.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AlgorithmsSetlSityTest\AlgorithmsSetlSityTest.csproj">
+      <Project>{4d52db69-2b11-4e30-80eb-b2395aaf0285}</Project>
+      <Name>AlgorithmsSetlSityTest</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

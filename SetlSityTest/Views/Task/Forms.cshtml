@@ -12,65 +12,57 @@
 {
     if ((User.IsInRole("admin") || User.IsInRole("OneTask")) && task.Name == "а")
     {
-        using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "OneTask" }))
+        using (Ajax.BeginForm("ConvertToBin", new AjaxOptions { UpdateTargetId = "OneTask" }))
         {
             @Html.AntiForgeryToken()
-
-            <input type="text" name="one" />
-            <input type="text" id="o" name="name" />
+            <div>Задача №1(а)</div>
+            <input type="number" min="0" max="2047" name="inputData" />            
             <input type="submit" value="Поиск" />
             <p id="OneTask">
 
-            </p>
-            <div>a</div>
+            </p>            
         }
     }
 
     if ((User.IsInRole("admin") || User.IsInRole("TwoTask")) && task.Name == "б")
     {
-        using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "TwoTask" }))
+        using (Ajax.BeginForm("ConvertToHex", new AjaxOptions { UpdateTargetId = "TwoTask" }))
         {
             @Html.AntiForgeryToken()
-
-            <input type="text" name="one" />
-            <input type="text" id="o" name="name" />
+            <div>Задача №2(б)</div>
+            <input type="number" min="0" max="2047" name="inputData" />
             <input type="submit" value="Поиск" />
             <p id="TwoTask">
 
-            </p>
-            <div>б</div>
+            </p>            
         }
     }
 
     if ((User.IsInRole("admin") || User.IsInRole("ThreeTask")) && task.Name == "в")
     {
-        using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "ThreeTask" }))
+        using (Ajax.BeginForm("Sorting", new AjaxOptions { UpdateTargetId = "ThreeTask" }))
         {
             @Html.AntiForgeryToken()
-
-            <input type="text" name="one" />
-            <input type="text" id="o" name="name" />
+            <div>Задача №3(в)</div>
+            <input type="number" min="1" max="2047" name="inputData" />            
             <input type="submit" value="Поиск" />
             <p id="ThreeTask">
 
-            </p>
-            <div>в</div>
+            </p>            
         }
     }
 
     if ((User.IsInRole("admin") || User.IsInRole("FourTask")) && task.Name == "г")
     {
-        using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "FourTask" }))
+        using (Ajax.BeginForm("Fibo", new AjaxOptions { UpdateTargetId = "FourTask" }))
         {
             @Html.AntiForgeryToken()
-
-            <input type="text" name="one" />
-            <input type="text" id="o" name="name" />
+            <div>Задача №4(г)</div>
+            <input type="number" min="1" max="30" name="inputData" />
             <input type="submit" value="Поиск" />
             <p id="FourTask">
 
-            </p>
-            <div>г</div>
+            </p>            
         }
     }
 
@@ -79,13 +71,12 @@
         using (Ajax.BeginForm("AddNewUser", new AjaxOptions { UpdateTargetId = "FiveTask" }))
         {
             @Html.AntiForgeryToken()
-
+            <div>Задача №5(д)</div>
             <input type="text" name="inputData" />
             <input type="submit" value="Поиск" />
             <p id="FiveTask">
 
-            </p>
-            <div>д</div>
+            </p>            
         }
     }
 
@@ -95,29 +86,26 @@
         using (Ajax.BeginForm("CountUserTask", new AjaxOptions { UpdateTargetId = "SixTask" }))
         {
             @Html.AntiForgeryToken()
-
+            <div>Задача №6(е</div>
             <input type="text" name="inputData" />
             <input type="submit" value="Поиск" />
             <p id="SixTask">
 
-            </p>
-            <div>е</div>
+            </p>            
         }
     }
 
     if ((User.IsInRole("admin") || User.IsInRole("SevenTask")) && task.Name == "ж")
     {
-        using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "SevenTask" }))
+        using (Ajax.BeginForm("Reverse", new AjaxOptions { UpdateTargetId = "SevenTask" }))
         {
             @Html.AntiForgeryToken()
-
-            <input type="text" name="one" />
-            <input type="text" id="o" name="name" />
+            <div>Задача №7(ж)</div>
+            <input type="text" name="inputData" />            
             <input type="submit" value="Поиск" />
             <p id="SevenTask">
 
-            </p>
-            <div>ж</div>
+            </p>            
         }
     }
 
@@ -126,14 +114,12 @@
         using (Ajax.BeginForm("NewTaskDo", new AjaxOptions { UpdateTargetId = "newTask" }))
         {
             @Html.AntiForgeryToken()
-
-            <input type="text" name="one" />
-            <input type="text" id="o" name="name" />
+            <div>Новые задачи</div>
+            <input type="text" name="inputData" />
             <input type="submit" value="Поиск" />
             <p id="newTask">
 
-            </p>
-            <div>new task</div>
+            </p>            
         }
     }
 }

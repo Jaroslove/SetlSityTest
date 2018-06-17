@@ -31,6 +31,10 @@ namespace SetlSityTest.Controllers
             get { return HttpContext.GetOwinContext().Authentication; }
         }
 
+        private AlgorithmsSetlSityTest.Tasks taskAlg = new AlgorithmsSetlSityTest.Tasks();        
+
+
+
         public ActionResult Forms()
         {
             var idUser = User.Identity.GetUserId();
@@ -130,9 +134,59 @@ namespace SetlSityTest.Controllers
             return "Неверно введенные данные";
         }
 
-        public int NewTaskDo(int one)
+        [FormAction("ConvertToBin")]
+        public string ConvertToBin(int inputData)
         {
-            return one + 1000;
+            var rezult = taskAlg.TaskOne(inputData);
+
+            HttpContext.Items["rezult"] = rezult;
+
+            return rezult;
+        }
+
+        [FormAction("ConvertToHex")]
+        public string ConvertToHex(int inputData)
+        {
+            var rezult = taskAlg.TaskTwo(inputData);
+
+            HttpContext.Items["rezult"] = rezult;
+
+            return rezult;
+        }
+
+        [FormAction("Sorting")]
+        public string Sorting(int inputData)
+        {
+            var rezult = taskAlg.TaskThree(inputData);
+
+            HttpContext.Items["rezult"] = rezult;
+
+            return rezult.ToString();
+        }
+
+        [FormAction("Fibo")]
+        public string Fibo(int inputData)
+        {
+            var rezult = taskAlg.TaskFour(inputData);
+
+            HttpContext.Items["rezult"] = rezult;
+
+            return rezult.ToString();
+        }
+
+        [FormAction("Reverse")]
+        public string Reverse(string inputData)
+        {
+            var rezult = taskAlg.TaskSeven(inputData);
+
+            HttpContext.Items["rezult"] = rezult;
+
+            return rezult.ToString();
+        }
+
+        public string NewTaskDo(int inputData)
+        {
+            return "новая задача"; 
         }
 
 

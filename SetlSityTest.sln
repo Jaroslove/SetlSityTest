@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetlSityTest", "SetlSityTest\SetlSityTest.csproj", "{1166CF7D-DBDA-471F-A966-B21F621390E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmsSetlSityTest", "AlgorithmsSetlSityTest\AlgorithmsSetlSityTest.csproj", "{4D52DB69-2B11-4E30-80EB-B2395AAF0285}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1166CF7D-DBDA-471F-A966-B21F621390E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1166CF7D-DBDA-471F-A966-B21F621390E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1166CF7D-DBDA-471F-A966-B21F621390E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D52DB69-2B11-4E30-80EB-B2395AAF0285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D52DB69-2B11-4E30-80EB-B2395AAF0285}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D52DB69-2B11-4E30-80EB-B2395AAF0285}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D52DB69-2B11-4E30-80EB-B2395AAF0285}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

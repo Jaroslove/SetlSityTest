@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -32,6 +33,41 @@ namespace SetlSityTest.Controllers
             return View();
         }
 
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(LoginModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user = await UserManager.FindAsync(model.UserName, model.Pass);
+
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "неверный логин или пароль");
+                }
+                else
+                {
+                    ClaimsIdentity claim = await UserManager
+                        .CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+
+                    AuthenticationManager.SignOut();
+                    AuthenticationManager.SignIn(
+                        new AuthenticationProperties
+                        {
+                            IsPersistent = true,
+                        }, claim);
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
+            return View(model);
+        }
+
         public ActionResult Register()
         {
             return View();
@@ -39,7 +75,7 @@ namespace SetlSityTest.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async System.Threading.Tasks.Task<ActionResult> Register(RegisterModel model)
+        public async Task<ActionResult> Register(RegisterModel model)
         {
             if (ModelState.IsValid)
             {

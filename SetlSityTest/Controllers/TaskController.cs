@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using SetlSityTest.Filters;
 using SetlSityTest.Models;
 using System;
 using System.Collections.Generic;
@@ -64,9 +65,11 @@ namespace SetlSityTest.Controllers
             //return "задача добавлена";
         }
 
+        [FormAction("Add")]
         [Authorize(Roles = "admin")]
         public int Add(int one)
         {
+            HttpContext.Items["rezult"] = 100;
             return one + 100;
         }
 

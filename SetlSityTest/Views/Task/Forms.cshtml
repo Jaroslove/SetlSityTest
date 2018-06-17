@@ -37,11 +37,11 @@
             <p id="TwoTask">
 
             </p>
-            <div>a</div>
+            <div>б</div>
         }
     }
 
-    if ((User.IsInRole("admin") || User.IsInRole("ThreeTask")) && task.Name == "а")
+    if ((User.IsInRole("admin") || User.IsInRole("ThreeTask")) && task.Name == "в")
     {
         using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "ThreeTask" }))
         {
@@ -53,11 +53,11 @@
             <p id="ThreeTask">
 
             </p>
-            <div>a</div>
+            <div>в</div>
         }
     }
 
-    if ((User.IsInRole("admin") || User.IsInRole("FourTask")) && task.Name == "а")
+    if ((User.IsInRole("admin") || User.IsInRole("FourTask")) && task.Name == "г")
     {
         using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "FourTask" }))
         {
@@ -69,11 +69,11 @@
             <p id="FourTask">
 
             </p>
-            <div>a</div>
+            <div>г</div>
         }
     }
 
-    if ((User.IsInRole("admin") || User.IsInRole("FiveTask")) && task.Name == "а")
+    if ((User.IsInRole("admin") || User.IsInRole("FiveTask")) && task.Name == "д")
     {
         using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "FiveTask" }))
         {
@@ -85,12 +85,12 @@
             <p id="FiveTask">
 
             </p>
-            <div>a</div>
+            <div>д</div>
         }
     }
 
 
-    if ((User.IsInRole("admin") || User.IsInRole("SixTask")) && task.Name == "а")
+    if ((User.IsInRole("admin") || User.IsInRole("SixTask")) && task.Name == "е")
     {
         using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "SixTask" }))
         {
@@ -102,11 +102,11 @@
             <p id="SixTask">
 
             </p>
-            <div>a</div>
+            <div>е</div>
         }
     }
 
-    if ((User.IsInRole("admin") || User.IsInRole("SevenTask")) && task.Name == "а")
+    if ((User.IsInRole("admin") || User.IsInRole("SevenTask")) && task.Name == "ж")
     {
         using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "SevenTask" }))
         {
@@ -118,7 +118,7 @@
             <p id="SevenTask">
 
             </p>
-            <div>a</div>
+            <div>ж</div>
         }
     }
 
@@ -139,18 +139,41 @@
     }
 }
 
+<h1>Добавление новой задачи</h1>
+
+@using (Html.BeginForm("AddNewTask", "Task"))
+{
+    @Html.AntiForgeryToken()
+
+    @*<div class="form-horizontal">
+        <h4>RegisterModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+        <input type="text" name="name" />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Добавить" class="btn btn-default" />
+            </div>
+        </div>
+    @*</div>*@
+}
 @*@if(User.IsInRole("admin"))
 {
-    using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "a" }))
+    using (Ajax.BeginForm("AddNewTask", new AjaxOptions { UpdateTargetId = "newTaskS" }))
     {
         @Html.AntiForgeryToken()
     
-        <input type="text" name="one" />
-        <input type="text" id="o" name="name" />
-        <input type="submit" value="Поиск" />
-        <p id="a">
+        <input type="text" name="name" />
+        <input type="submit" value="Добавить" />
+        <p id="newTaskS">
     
         </p>
-        <div>sfdsfsfsfwe</div>
     }
 }*@

@@ -40,6 +40,32 @@ namespace SetlSityTest.Controllers
             return View(currentUser);
         }
 
+        public ActionResult AddNewTask(string name)
+        {
+
+            SetlSityTest.Models.Task task = new Models.Task { Name = name };
+
+            task.ApplicationUsers = new List<ApplicationUser>
+            {
+                UserManager.FindById(User.Identity.GetUserId())
+            };
+
+            //using (var db = ApplicationContext.Create())
+            //{
+            ApplicationUserManager.db.Tasks.Add(task);
+
+            var id = User.Identity.GetUserId();
+                var user = ApplicationUserManager.db.Users.FirstOrDefault(i => i.Id == id);
+                if (user != null)
+                {
+                    user.Tasks.Add(task);
+                }
+            ApplicationUserManager.db.SaveChanges();
+            //}
+            return RedirectToAction("Forms");
+            //return "задача добавлена";
+        }
+
         [Authorize(Roles = "admin")]
         public int Add(int one)
         {

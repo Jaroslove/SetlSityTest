@@ -160,5 +160,12 @@ namespace SetlSityTest.Controllers
 
             return View(model);
         }
+
+
+        public ActionResult History()
+        {
+            var users = UserManager.Users.ToList();
+            return View(users);
+        }
     }
 }

@@ -31,6 +31,8 @@ namespace SetlSityTest.Models
 
         public virtual DbSet<Task> Tasks { get; set; }
 
+        public virtual DbSet<History> Histories { get; set; }
+
         public static ApplicationContext Create()
         {
             return new ApplicationContext();

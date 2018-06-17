@@ -194,7 +194,12 @@
     <Compile Include="Migrations\201806171534388_AddedLastLogInToUser.Designer.cs">
       <DependentUpon>201806171534388_AddedLastLogInToUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806171557138_AddedHistoryTab.cs" />
+    <Compile Include="Migrations\201806171557138_AddedHistoryTab.Designer.cs">
+      <DependentUpon>201806171557138_AddedHistoryTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\History.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\Task.cs" />
@@ -243,6 +248,7 @@
     <Content Include="Views\Task\Index.cshtml" />
     <Content Include="Views\Task\Login.cshtml" />
     <Content Include="Views\Task\Forms.cshtml" />
+    <Content Include="Views\Task\History.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -269,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806171534388_AddedLastLogInToUser.resx">
       <DependentUpon>201806171534388_AddedLastLogInToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806171557138_AddedHistoryTab.resx">
+      <DependentUpon>201806171557138_AddedHistoryTab.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

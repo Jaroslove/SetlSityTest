@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Forms";
+}
+
+<h2>Forms</h2>
+
+@if(User.IsInRole("admin"))
+{
+    using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "a" }))
+    {
+        @Html.AntiForgeryToken()
+    
+        <input type="text" name="one" />
+        <input type="text" id="o" name="name" />
+        <input type="submit" value="Поиск" />
+        <p id="a">
+    
+        </p>
+        <div>sfdsfsfsfwe</div>
+    }
+}

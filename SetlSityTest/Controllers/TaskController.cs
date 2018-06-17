@@ -28,11 +28,19 @@ namespace SetlSityTest.Controllers
         {
             get { return HttpContext.GetOwinContext().Authentication; }
         }
-        // GET: Task
-        public ActionResult Index()
+
+        public ActionResult Forms()
         {
             return View();
         }
+
+        [Authorize(Roles ="admin")]
+        public int Add(int one)
+        {
+            return one + 100;
+        }
+
+
 
         [AllowAnonymous]
         public ActionResult Login()

@@ -1,11 +1,145 @@
-﻿
+﻿@model SetlSityTest.Models.ApplicationUser
 @{
     ViewBag.Title = "Forms";
 }
 
 <h2>Forms</h2>
 
-@if(User.IsInRole("admin"))
+<h1>@Model.Tasks.FirstOrDefault(i => i.Name == "а").Name</h1>
+
+@foreach (var task in Model.Tasks)
+{
+    if ((User.IsInRole("admin") || User.IsInRole("OneTask")) && task.Name == "а")
+    {
+        using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "OneTask" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="text" name="one" />
+            <input type="text" id="o" name="name" />
+            <input type="submit" value="Поиск" />
+            <p id="OneTask">
+
+            </p>
+            <div>a</div>
+        }
+    }
+
+    if ((User.IsInRole("admin") || User.IsInRole("TwoTask")) && task.Name == "б")
+    {
+        using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "TwoTask" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="text" name="one" />
+            <input type="text" id="o" name="name" />
+            <input type="submit" value="Поиск" />
+            <p id="TwoTask">
+
+            </p>
+            <div>a</div>
+        }
+    }
+
+    if ((User.IsInRole("admin") || User.IsInRole("ThreeTask")) && task.Name == "а")
+    {
+        using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "ThreeTask" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="text" name="one" />
+            <input type="text" id="o" name="name" />
+            <input type="submit" value="Поиск" />
+            <p id="ThreeTask">
+
+            </p>
+            <div>a</div>
+        }
+    }
+
+    if ((User.IsInRole("admin") || User.IsInRole("FourTask")) && task.Name == "а")
+    {
+        using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "FourTask" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="text" name="one" />
+            <input type="text" id="o" name="name" />
+            <input type="submit" value="Поиск" />
+            <p id="FourTask">
+
+            </p>
+            <div>a</div>
+        }
+    }
+
+    if ((User.IsInRole("admin") || User.IsInRole("FiveTask")) && task.Name == "а")
+    {
+        using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "FiveTask" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="text" name="one" />
+            <input type="text" id="o" name="name" />
+            <input type="submit" value="Поиск" />
+            <p id="FiveTask">
+
+            </p>
+            <div>a</div>
+        }
+    }
+
+
+    if ((User.IsInRole("admin") || User.IsInRole("SixTask")) && task.Name == "а")
+    {
+        using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "SixTask" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="text" name="one" />
+            <input type="text" id="o" name="name" />
+            <input type="submit" value="Поиск" />
+            <p id="SixTask">
+
+            </p>
+            <div>a</div>
+        }
+    }
+
+    if ((User.IsInRole("admin") || User.IsInRole("SevenTask")) && task.Name == "а")
+    {
+        using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "SevenTask" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="text" name="one" />
+            <input type="text" id="o" name="name" />
+            <input type="submit" value="Поиск" />
+            <p id="SevenTask">
+
+            </p>
+            <div>a</div>
+        }
+    }
+
+    if (!ViewBag.TASK_NAMES.Contains(task.Name))
+    {
+        using (Ajax.BeginForm("NewTaskDo", new AjaxOptions { UpdateTargetId = "newTask" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="text" name="one" />
+            <input type="text" id="o" name="name" />
+            <input type="submit" value="Поиск" />
+            <p id="newTask">
+
+            </p>
+            <div>new task</div>
+        }
+    }
+}
+
+@*@if(User.IsInRole("admin"))
 {
     using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "a" }))
     {
@@ -19,4 +153,4 @@
         </p>
         <div>sfdsfsfsfwe</div>
     }
-}
+}*@

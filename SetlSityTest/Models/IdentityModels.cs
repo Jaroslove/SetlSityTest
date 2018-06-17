@@ -87,7 +87,7 @@ namespace SetlSityTest.Models
             var roleAdmin = new IdentityRole("admin");
             context.Roles.Add(roleAdmin);
 
-            var task1 = new Task { Name = "a" };
+            var task1 = new Task { Name = "а" };
             context.Tasks.Add(task1);
             var task2 = new Task { Name = "б" };
             context.Tasks.Add(task2);

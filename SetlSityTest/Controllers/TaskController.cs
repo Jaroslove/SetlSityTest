@@ -31,16 +31,25 @@ namespace SetlSityTest.Controllers
 
         public ActionResult Forms()
         {
-            return View();
+            var idUser = User.Identity.GetUserId();
+            ViewBag.Id = idUser;
+            ViewBag.TASK_NAMES = new List<string> { "а", "б", "в", "г", "д", "е" };//added ж
+
+            var currentUser = UserManager.FindById(User.Identity.GetUserId());
+
+            return View(currentUser);
         }
 
-        [Authorize(Roles ="admin")]
+        [Authorize(Roles = "admin")]
         public int Add(int one)
         {
             return one + 100;
         }
 
-
+        public int NewTaskDo(int one)
+        {
+            return one + 1000;
+        }
 
         [AllowAnonymous]
         public ActionResult Login()
@@ -84,7 +93,7 @@ namespace SetlSityTest.Controllers
             return View(model);
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -92,7 +101,7 @@ namespace SetlSityTest.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public async Task<ActionResult> Register(RegisterModel model)
         {
             if (ModelState.IsValid)

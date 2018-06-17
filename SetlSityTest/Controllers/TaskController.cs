@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace SetlSityTest.Controllers
 {
+    [Authorize]
     public class TaskController : Controller
     {
         private ApplicationUserManager UserManager
@@ -33,6 +34,7 @@ namespace SetlSityTest.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult Login()
         {
             return View();
@@ -40,8 +42,14 @@ namespace SetlSityTest.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<ActionResult> Login(LoginModel model)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                AuthenticationManager.SignOut();
+                return RedirectToAction("Login", "Task");
+            }
             if (ModelState.IsValid)
             {
                 ApplicationUser user = await UserManager.FindAsync(model.UserName, model.Pass);

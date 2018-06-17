@@ -182,8 +182,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806171141263_InitialCreate.cs" />
+    <Compile Include="Migrations\201806171141263_InitialCreate.Designer.cs">
+      <DependentUpon>201806171141263_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806171321549_TaskAdd.cs" />
+    <Compile Include="Migrations\201806171321549_TaskAdd.Designer.cs">
+      <DependentUpon>201806171321549_TaskAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\Task.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -245,6 +255,14 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201806171141263_InitialCreate.resx">
+      <DependentUpon>201806171141263_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806171321549_TaskAdd.resx">
+      <DependentUpon>201806171321549_TaskAdd.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

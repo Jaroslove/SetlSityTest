@@ -84,6 +84,7 @@ namespace SetlSityTest.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -91,6 +92,7 @@ namespace SetlSityTest.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<ActionResult> Register(RegisterModel model)
         {
             if (ModelState.IsValid)

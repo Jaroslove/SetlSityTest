@@ -19,11 +19,15 @@ namespace SetlSityTest.Models
         public ApplicationUser(string name) : base(name)
         {
         }
+
+        public virtual ICollection<Task> Tasks { get; set; } = new List<Task>();
     }
 
     public class ApplicationContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationContext() : base("SetlSityTest") { }
+
+        public virtual DbSet<Task> Tasks { get; set; }
 
         public static ApplicationContext Create()
         {
@@ -82,6 +86,29 @@ namespace SetlSityTest.Models
 
             var roleAdmin = new IdentityRole("admin");
             context.Roles.Add(roleAdmin);
+
+            var task1 = new Task { Name = "a" };
+            context.Tasks.Add(task1);
+            var task2 = new Task { Name = "б" };
+            context.Tasks.Add(task2);
+            var task3 = new Task { Name = "в" };
+            context.Tasks.Add(task3);
+            var task4 = new Task { Name = "г" };
+            context.Tasks.Add(task4);
+            var task5 = new Task { Name = "д" };
+            context.Tasks.Add(task5);
+            var task6 = new Task { Name = "е" };
+            context.Tasks.Add(task6);
+            var task7 = new Task { Name = "ж" };
+            context.Tasks.Add(task7);
+
+            user.Tasks.Add(task1);
+            user.Tasks.Add(task2);
+            user.Tasks.Add(task3);
+            user.Tasks.Add(task4);
+            user.Tasks.Add(task5);
+            user.Tasks.Add(task6);
+            user.Tasks.Add(task7);
 
             //var role1 = new IdentityUserRole
             //{

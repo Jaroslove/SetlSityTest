@@ -280,8 +280,21 @@ namespace SetlSityTest.Controllers
 
         public ActionResult History()
         {
-            var users = UserManager.Users.ToList();
-            return View(users);
+            try
+            {
+                var users = UserManager.Users.ToList();
+
+                ViewBag.User = UserManager.FindById(User.Identity.GetUserId());
+
+                ViewBag.History = ApplicationUserManager.Context.Histories.ToList();
+
+                return View(users);
+            }
+            catch (Exception)
+            {                
+            }
+
+            return View();
         }
     }
 }

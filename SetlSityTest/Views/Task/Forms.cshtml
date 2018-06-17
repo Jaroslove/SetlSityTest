@@ -3,10 +3,8 @@
     ViewBag.Title = "Forms";
 }
 
-<h2>Forms</h2>
-<h2>@Model.LastLogIn</h2>
+<h2>Задачи</h2>
 
-<h1>@Model.Tasks.FirstOrDefault(i => i.Name == "а").Name</h1>
 
 @foreach (var task in Model.Tasks)
 {

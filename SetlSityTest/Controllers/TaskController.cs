@@ -50,18 +50,16 @@ namespace SetlSityTest.Controllers
                 UserManager.FindById(User.Identity.GetUserId())
             };
 
-            //using (var db = ApplicationContext.Create())
-            //{
-            ApplicationUserManager.db.Tasks.Add(task);
+            ApplicationUserManager.Context.Tasks.Add(task);
 
             var id = User.Identity.GetUserId();
-                var user = ApplicationUserManager.db.Users.FirstOrDefault(i => i.Id == id);
+                var user = ApplicationUserManager.Context.Users.FirstOrDefault(i => i.Id == id);
                 if (user != null)
                 {
                     user.Tasks.Add(task);
                 }
-            ApplicationUserManager.db.SaveChanges();
-            //}
+            ApplicationUserManager.Context.SaveChanges();
+
             return RedirectToAction("Forms");
             //return "задача добавлена";
         }
@@ -112,6 +110,9 @@ namespace SetlSityTest.Controllers
                         {
                             IsPersistent = true,
                         }, claim);
+                    user.LastLogIn = DateTime.Now;
+                    UserManager.Update(user);
+
                     return RedirectToAction("Index", "Home");
                 }
             }

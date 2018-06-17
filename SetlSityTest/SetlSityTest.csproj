@@ -190,6 +190,10 @@
     <Compile Include="Migrations\201806171321549_TaskAdd.Designer.cs">
       <DependentUpon>201806171321549_TaskAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806171534388_AddedLastLogInToUser.cs" />
+    <Compile Include="Migrations\201806171534388_AddedLastLogInToUser.Designer.cs">
+      <DependentUpon>201806171534388_AddedLastLogInToUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\RegisterModel.cs" />
@@ -262,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806171321549_TaskAdd.resx">
       <DependentUpon>201806171321549_TaskAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806171534388_AddedLastLogInToUser.resx">
+      <DependentUpon>201806171534388_AddedLastLogInToUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

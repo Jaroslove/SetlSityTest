@@ -20,6 +20,8 @@ namespace SetlSityTest.Models
         {
         }
 
+        public DateTime? LastLogIn { get; set; }
+
         public virtual ICollection<Task> Tasks { get; set; } = new List<Task>();
     }
 
@@ -38,12 +40,12 @@ namespace SetlSityTest.Models
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
         public ApplicationUserManager(IUserStore<ApplicationUser> store) : base(store) { }
-        public static ApplicationContext db;
+        public static ApplicationContext Context;
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options,
             IOwinContext context)
         {
-             db = context.Get<ApplicationContext>();
-            ApplicationUserManager manager = new ApplicationUserManager(new UserStore<ApplicationUser>(db));
+             Context = context.Get<ApplicationContext>();
+            ApplicationUserManager manager = new ApplicationUserManager(new UserStore<ApplicationUser>(Context));
 
             return manager;
         }
